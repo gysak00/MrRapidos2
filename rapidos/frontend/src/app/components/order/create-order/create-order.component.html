@@ -1,0 +1,60 @@
+<p-card header="Crear Orden" styleClass="p-mt-5">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="p-fluid grid">
+        <!-- Client Selection -->
+        <div class="field col-12 md:col-6">
+          <label for="id_cliente">Cliente</label>
+          <p-dropdown
+            [options]="clientes"
+            optionLabel="nombre"
+            optionValue="id" 
+            formControlName="id_cliente"
+            placeholder="Selecciona un Cliente"
+          ></p-dropdown>
+          <small *ngIf="form.controls['id_cliente'].invalid && form.controls['id_cliente'].touched" class="p-error">Client is required.</small>
+        </div>
+  
+        <!-- Employee Selection -->
+        <div class="field col-12 md:col-6">
+          <label for="id_empleado">Empleado</label>
+          <p-dropdown
+            [options]="empleados"
+            optionLabel="nombre"
+            optionValue="id" 
+            formControlName="id_empleado"
+            placeholder="Selecciona un Empleado"
+          ></p-dropdown>
+          <small *ngIf="form.controls['id_empleado'].invalid && form.controls['id_empleado'].touched" class="p-error">Employee is required.</small>
+        </div>
+  
+        <!-- Order Date -->
+        <div class="field col-12 md:col-6">
+          <label for="fecha_orden">Fecha </label>
+          <p-calendar id="fecha_orden" formControlName="fecha_orden" [showTime]="true"></p-calendar>
+          <small *ngIf="form.controls['fecha_orden'].invalid && form.controls['fecha_orden'].touched" class="p-error">Order date is required.</small>
+        </div>
+  
+        <!-- Order State -->
+        <div class="field col-12 md:col-6">
+          <label for="estado">Estado</label>
+          <p-dropdown id="estado" [options]="estados" formControlName="estado" placeholder="Selecciona un estado"></p-dropdown>
+          <small *ngIf="form.controls['estado'].invalid && form.controls['estado'].touched" class="p-error">State is required.</small>
+        </div>
+  
+        <!-- Total Amount -->
+        <div class="field col-12 md:col-6">
+          <label for="total">Total</label>
+          <p-inputNumber id="total" formControlName="total" [min]="0" mode="currency" currency="USD"></p-inputNumber>
+          <small *ngIf="form.controls['total'].invalid && form.controls['total'].touched" class="p-error">Valid total is required.</small>
+        </div>
+      </div>
+  
+      <div class="p-d-flex p-jc-between p-mt-4">
+        <!-- Submit Button -->
+        <button pButton type="submit" label="Guardar" icon="pi pi-check" [disabled]="form.invalid" class="p-button-success"></button>
+        <!-- Cancel Button -->
+        <button pButton type="button" label="Cancelar" icon="pi pi-times" class="p-button-secondary" (click)="onCancel()"></button>
+      </div>
+    </form>
+  </p-card>
+  

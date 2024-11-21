@@ -1,0 +1,48 @@
+<p-card header="Crear Empleados" styleClass="p-mt-5">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="p-fluid grid">
+        <!-- Employee Name -->
+        <div class="field col-12 md:col-6">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" type="text" pInputText formControlName="nombre" />
+          <small *ngIf="form.controls['nombre'].invalid && form.controls['nombre'].touched" class="p-error">Name is required.</small>
+        </div>
+  
+        <!-- Phone -->
+        <div class="field col-12 md:col-6">
+          <label for="telefono">Telefono</label>
+          <input id="telefono" type="text" pInputText formControlName="telefono" />
+          <small *ngIf="form.controls['telefono'].invalid && form.controls['telefono'].touched" class="p-error">Valid phone is required.</small>
+        </div>
+  
+        <!-- Email -->
+        <div class="field col-12 md:col-6">
+          <label for="email">Email</label>
+          <input id="email" type="email" pInputText formControlName="email" />
+          <small *ngIf="form.controls['email'].invalid && form.controls['email'].touched" class="p-error">Valid email is required.</small>
+        </div>
+  
+        <!-- Address -->
+        <div class="field col-12 md:col-6">
+          <label for="direccion">Direccion</label>
+          <input id="direccion" type="text" pInputText formControlName="direccion" />
+          <small *ngIf="form.controls['direccion'].invalid && form.controls['direccion'].touched" class="p-error">Dirrecion es Requerida.</small>
+        </div>
+  
+        <!-- Role -->
+        <div class="field col-12 md:col-6">
+          <label for="rol">Rol</label>
+          <p-dropdown id="rol" [options]="roles" formControlName="rol" placeholder="Selecciona rol"></p-dropdown>
+          <small *ngIf="form.controls['rol'].invalid && form.controls['rol'].touched" class="p-error">Role is required.</small>
+        </div>
+      </div>
+  
+      <div class="p-d-flex p-jc-between p-mt-4">
+        <!-- Submit Button -->
+        <button pButton type="submit" label="Guardar" icon="pi pi-check" [disabled]="form.invalid" class="p-button-success"></button>
+        <!-- Cancel Button -->
+        <button pButton type="button" label="Cancelar" icon="pi pi-times" class="p-button-secondary" (click)="onCancel()"></button>
+      </div>
+    </form>
+  </p-card>
+  

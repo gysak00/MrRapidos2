@@ -1,0 +1,63 @@
+<div class="card">
+    <h2>Crear Clientes</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="p-grid">
+        <div class="p-col-12 p-md-6">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">
+              <i class="pi pi-user"></i>
+            </span>
+            <input type="text" pInputText placeholder="Nombre" formControlName="nombre" />
+          </div>
+          <small *ngIf="nombre?.invalid && nombre?.touched" class="p-error">
+            El nombre es obligatorio.
+          </small>
+        </div>
+  
+        <div class="p-col-12 p-md-6">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">
+              <i class="pi pi-map-marker"></i>
+            </span>
+            <input type="text" pInputText placeholder="Dirección" formControlName="direccion" />
+          </div>
+          <small *ngIf="direccion?.invalid && direccion?.touched" class="p-error">
+            La dirección es obligatoria.
+          </small>
+        </div>
+  
+        <div class="p-col-12 p-md-6">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">
+              <i class="pi pi-phone"></i>
+            </span>
+            <input type="text" pInputText placeholder="Teléfono" formControlName="telefono" />
+          </div>
+          <small *ngIf="telefono?.invalid && telefono?.touched" class="p-error">
+            El teléfono es obligatorio.
+          </small>
+        </div>
+  
+        <div class="p-col-12 p-md-6">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">
+              <i class="pi pi-envelope"></i>
+            </span>
+            <input type="email" pInputText placeholder="Correo Electrónico" formControlName="email" />
+          </div>
+          <small *ngIf="email?.invalid && email?.touched" class="p-error">
+            Debes ingresar un correo válido.
+          </small>
+        </div>
+        
+  
+        
+      </div>
+  
+      <div class="p-mt-3">
+        <button type="submit" pButton label="Guardar" class="p-button-success" [disabled]="form.invalid"></button>
+        <button type="button" pButton label="Cancelar" class="p-button-danger" (click)="cancel()"></button>
+      </div>
+    </form>
+  </div>
+  

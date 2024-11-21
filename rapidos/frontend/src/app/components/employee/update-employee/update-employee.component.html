@@ -1,0 +1,89 @@
+<div class="card">
+    <h2>Update Employee</h2>
+    <!-- Form for updating employee -->
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <!-- Input field for Employee Name -->
+      <div class="field">
+        <label for="nombre">Name</label>
+        <input
+          id="nombre"
+          type="text"
+          pInputText
+          formControlName="nombre"
+          placeholder="Enter employee name"
+        />
+        <!-- Show validation error -->
+        <small *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched" class="p-error">
+          Name is required.
+        </small>
+      </div>
+  
+      <!-- Input field for Phone -->
+      <div class="field">
+        <label for="telefono">Phone</label>
+        <input
+          id="telefono"
+          type="text"
+          pInputText
+          formControlName="telefono"
+          placeholder="Enter phone number"
+        />
+        <small *ngIf="form.get('telefono')?.invalid && form.get('telefono')?.touched" class="p-error">
+          Enter a valid phone number.
+        </small>
+      </div>
+  
+      <!-- Input field for Email -->
+      <div class="field">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          pInputText
+          formControlName="email"
+          placeholder="Enter email address"
+        />
+        <small *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="p-error">
+          Enter a valid email address.
+        </small>
+      </div>
+  
+      <!-- Input field for Address -->
+      <div class="field">
+        <label for="direccion">Address</label>
+        <input
+          id="direccion"
+          type="text"
+          pInputText
+          formControlName="direccion"
+          placeholder="Enter address"
+        />
+        <small *ngIf="form.get('direccion')?.invalid && form.get('direccion')?.touched" class="p-error">
+          Address is required.
+        </small>
+      </div>
+  
+      <!-- Dropdown for Role -->
+      <div class="field">
+        <label for="rol">Role</label>
+        <p-dropdown
+          id="rol"
+          [options]="roles" 
+          formControlName="rol"
+          placeholder="Select a role"
+          optionLabel="label" 
+        ></p-dropdown>
+        <small *ngIf="form.get('rol')?.invalid && form.get('rol')?.touched" class="p-error">
+          Role is required.
+        </small>
+      </div>
+      
+  
+      <!-- Submit and Cancel buttons -->
+      <div class="buttons">
+        <button pButton type="submit" label="Update" [disabled]="form.invalid"></button>
+        <button pButton type="button" label="Cancel" class="p-button-secondary" (click)="cancel()"></button>
+      </div>
+    </form>
+  </div>
+  

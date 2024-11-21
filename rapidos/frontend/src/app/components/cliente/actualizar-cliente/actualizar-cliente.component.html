@@ -1,0 +1,66 @@
+<div class="card">
+    <h2>Actualizar Cliente</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="p-fluid p-grid">
+  
+        <!-- Name Field -->
+        <div class="p-field p-col-12 p-md-6">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">
+              <i class="pi pi-user"></i>
+            </span>
+            <input id="nombre" type="text" pInputText placeholder="Nombre" formControlName="nombre" />
+          </div>
+          <small *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched" class="p-error">
+            El nombre es obligatorio.
+          </small>
+        </div>
+  
+        <!-- Address Field -->
+        <div class="p-field p-col-12 p-md-6">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">
+              <i class="pi pi-map-marker"></i>
+            </span>
+            <input id="direccion" type="text" pInputText placeholder="Dirección" formControlName="direccion" />
+          </div>
+          <small *ngIf="form.get('direccion')?.invalid && form.get('direccion')?.touched" class="p-error">
+            La dirección es obligatoria.
+          </small>
+        </div>
+  
+        <!-- Phone Field -->
+        <div class="p-field p-col-12 p-md-6">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">
+              <i class="pi pi-phone"></i>
+            </span>
+            <input id="telefono" type="text" pInputText placeholder="Teléfono" formControlName="telefono" />
+          </div>
+          <small *ngIf="form.get('telefono')?.invalid && form.get('telefono')?.touched" class="p-error">
+            El teléfono debe ser numérico.
+          </small>
+        </div>
+  
+        <!-- Email Field -->
+        <div class="p-field p-col-12 p-md-6">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">
+              <i class="pi pi-envelope"></i>
+            </span>
+            <input id="email" type="email" pInputText placeholder="Correo Electrónico" formControlName="email" />
+          </div>
+          <small *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="p-error">
+            Ingresa un correo válido.
+          </small>
+        </div>
+      </div>
+  
+      <!-- Buttons -->
+      <div class="p-d-flex p-jc-center p-mt-4">
+        <button type="submit" pButton label="Actualizar" icon="pi pi-check" class="p-button-success p-mr-2" [disabled]="form.invalid"></button>
+        <button type="button" pButton label="Cancelar" icon="pi pi-times" class="p-button-danger" (click)="cancel()"></button>
+      </div>
+    </form>
+  </div>
+  

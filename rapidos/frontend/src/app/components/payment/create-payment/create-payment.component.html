@@ -1,0 +1,48 @@
+<p-card header="Crear Pago">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="p-fluid">
+        <div class="field">
+          <label for="id_orden">Orden</label>
+          <p-dropdown 
+            [options]="ordenes" 
+            optionLabel="id" 
+            formControlName="id_orden"
+            placeholder="Selecciona una orden"></p-dropdown>
+        </div>
+  
+        <div class="field">
+          <label for="metodo_pago">Metodo de Pago</label>
+          <p-dropdown 
+            [options]="metodosPago" 
+            optionLabel="label" 
+            formControlName="metodo_pago"
+            placeholder="Selecciona un metodo de pago "></p-dropdown>
+        </div>
+        <div class="field">
+            <label for="fecha_pago">Fecha del Pago</label>
+            <p-calendar 
+              formControlName="fecha_pago" 
+              [showTime]="true" 
+              hourFormat="24"
+              placeholder="selecciona fecha de pago">
+            </p-calendar>
+          </div>
+          
+  
+        <div class="field">
+          <label for="valor_pago">Monto</label>
+          <p-inputNumber 
+            formControlName="valor_pago" 
+            mode="currency" 
+            currency="USD" 
+            locale="en-US"></p-inputNumber>
+        </div>
+  
+        <div class="buttons">
+          <button pButton label="Guardar" type="submit" [disabled]="form.invalid"></button>
+          <button pButton label="Cancel" type="button" (click)="onCancel()" class="p-button-secondary"></button>
+        </div>
+      </div>
+    </form>
+  </p-card>
+  

@@ -1,0 +1,85 @@
+<div class="p-card">
+    <h2>Create Order Detail</h2>
+    <form [formGroup]="orderDetailsForm" (ngSubmit)="onSubmit()">
+      <!-- Order ID Input -->
+      <div class="p-field">
+        <label for="id_orden">Order ID</label>
+        <input
+          id="id_orden"
+          type="number"
+          pInputText
+          formControlName="id_orden"
+          placeholder="Enter Order ID"
+          class="p-inputtext p-component"
+        />
+        <small
+          *ngIf="orderDetailsForm.get('id_orden')?.invalid && orderDetailsForm.get('id_orden')?.touched"
+          class="p-error"
+        >
+          Order ID is required.
+        </small>
+      </div>
+  
+      <!-- Product ID Input -->
+      <div class="p-field">
+        <label for="id_producto">Product ID</label>
+        <input
+          id="id_producto"
+          type="number"
+          pInputText
+          formControlName="id_producto"
+          placeholder="Enter Product ID"
+          class="p-inputtext p-component"
+        />
+        <small
+          *ngIf="orderDetailsForm.get('id_producto')?.invalid && orderDetailsForm.get('id_producto')?.touched"
+          class="p-error"
+        >
+          Product ID is required.
+        </small>
+      </div>
+  
+      <!-- Quantity Input -->
+      <div class="p-field">
+        <label for="cantidad">Quantity</label>
+        <input
+          id="cantidad"
+          type="number"
+          pInputText
+          formControlName="cantidad"
+          placeholder="Enter Quantity"
+          class="p-inputtext p-component"
+        />
+        <small
+          *ngIf="orderDetailsForm.get('cantidad')?.invalid && orderDetailsForm.get('cantidad')?.touched"
+          class="p-error"
+        >
+          Quantity must be at least 1.
+        </small>
+      </div>
+  
+      <!-- Unit Price Input -->
+      <div class="p-field">
+        <label for="precio_unitario">Unit Price</label>
+        <input
+          id="precio_unitario"
+          type="number"
+          step="0.01"
+          pInputText
+          formControlName="precio_unitario"
+          placeholder="Enter Unit Price"
+          class="p-inputtext p-component"
+        />
+        <small
+          *ngIf="orderDetailsForm.get('precio_unitario')?.invalid && orderDetailsForm.get('precio_unitario')?.touched"
+          class="p-error"
+        >
+          Unit Price must be greater than 0.
+        </small>
+      </div>
+  
+      <!-- Submit Button -->
+      <button pButton type="submit" label="Create" [disabled]="orderDetailsForm.invalid"></button>
+    </form>
+  </div>
+  
